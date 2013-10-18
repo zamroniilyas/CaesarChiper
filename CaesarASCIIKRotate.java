@@ -8,41 +8,37 @@ public class CaesarASCIIKRotate{
     private char charASCII;
 
     public CaesarASCIIKRotate(String pesan, int rotate) {
-        sebelumEnkripsi(pesan);
         this.rotate=rotate;
-    }
-        
-    private void sebelumEnkripsi(String pesan){
-        log+="---------------Sebelum Enkripsi----------------\n";
-        for (int i = 0; i < pesan.length(); i++) {            
-            defaultASCII = pesan.charAt(i);                    
-            log+=pesan.charAt(i)+" = "+defaultASCII+"\n";
-        }        
-        
+        System.out.println("---------Enkripsi Caesar---------");
+        System.out.println("Pesan (Plaintext) : "+pesan);
+        String enkripsi = enkripsiCaesar(pesan);
+        System.out.println("Enkripsi : "+enkripsi);
+        System.out.println("Dekripsi : "+dekripsiCaesar(enkripsi));
+        System.out.println("----------------Log--------------\n");
+        System.out.println(log);
     }
     
     public String enkripsiCaesar(String pesan){
         log+="---------------Proses Enkripsi------------------\n";
-        for (int i = 0; i < pesan.length(); i++) {            
-            
-            
+        for (int i = 0; i < pesan.length(); i++) {                                    
             intASCII = pesan.charAt(i);
-            log+=intASCII;
+            log+=pesan.charAt(i)+"("+intASCII+")";
             intASCII = intASCII +rotate;
             charASCII=(char) intASCII;            
-            log+=" + "+rotate+" = "+intASCII+"\n";
+            log+=" + "+rotate+" = "+charASCII+"("+intASCII+") \n";
             enkripsi+=charASCII;            
         }        
-        return enkripsi;       
+        return enkripsi;     
     }
     
     public String dekripsiCaesar(String pesan){
         log+="---------------Proses Dekripsi------------------\n";
         for (int i = 0; i < pesan.length(); i++) {
-            log+=intASCII+" - "+rotate;
-            intASCII = pesan.charAt(i)-rotate;
+            intASCII=pesan.charAt(i);
+            log+=pesan.charAt(i)+"("+intASCII+") - "+rotate;
+            intASCII = intASCII-rotate;
             charASCII=(char) intASCII;
-            log+=" = "+intASCII+"\n";
+            log+=" = "+charASCII+"("+intASCII+") \n";
             dekripsi+=charASCII;            
         }                
         return dekripsi;
